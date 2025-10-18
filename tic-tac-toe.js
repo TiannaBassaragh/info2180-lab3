@@ -10,15 +10,17 @@ document.addEventListener('DOMContentLoaded', () => {
         square.classList.add("square");
     }
 
-    // Exercise 2, 3, 4
-    let currentPlayer = "X";                            // Track whose turn it is
+    // Exercise 2-6
+    let currentPlayer = "X";                          // Track whose turn it is
     let grid = ["", "", "", "", "", "", "", "", ""];  // Track state of the board
     let gameOver = false; // Exercise 4: prevents extra clicks after a win
 
+    // For each square on the board
     for (let i = 0; i < squares.length; i++) {
-        // Exercise 2 and 4
+        // Exercise 2, 4, 6
         squares[i].addEventListener("click", () => {
-            // Exercise 2: Only allow empty squares to be clicked
+            // Exercise 2: Only allow empty squares to be clicked and \
+            // Exercise 6: prevent changing a filled square or playing after game over
             if (squares[i].textContent === "" && !gameOver) {
                 squares[i].textContent = currentPlayer;
                 squares[i].classList.add(currentPlayer);
@@ -49,11 +51,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Exercise 3
         squares[i].addEventListener('mouseover', () => {
-            squares[i].classList.add('hover');
+            squares[i].classList.add('hover');      // Add hover style when mouse is over the square
         });
 
         squares[i].addEventListener('mouseout', () => {
-            squares[i].classList.remove('hover');
+            squares[i].classList.remove('hover');   // Remove hover style when mouse leaves square
         });
     }
 
