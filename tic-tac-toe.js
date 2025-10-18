@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const board = document.getElementById('board');
     const squares = board.getElementsByTagName("div");
     const status = document.getElementById('status');   // Exercise 4, necessary for current "winner message" functionality
+    const newGameBtn = document.getElementsByClassName('btn')[0]; // Exercise 5, necessary for the button
 
     // Loop through each one and add the CSS class 'square'
     for (let square of squares) {
@@ -11,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Exercise 2, 3, 4
     let currentPlayer = "X";                            // Track whose turn it is
-    const grid = ["", "", "", "", "", "", "", "", ""];  // Track state of the board
+    let grid = ["", "", "", "", "", "", "", "", ""];  // Track state of the board
     let gameOver = false; // Exercise 4: prevents extra clicks after a win
 
     for (let i = 0; i < squares.length; i++) {
@@ -72,4 +73,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         return false;
     }
+
+    // Exercise 5: Restart the game
+    newGameBtn.addEventListener('click', () => {
+        // clear grid array and flags
+        grid = ["", "", "", "", "", "", "", "", ""];
+        currentPlayer = "X";
+        gameOver = false;
+
+        // reset squares
+        for (let square of squares) {
+            square.textContent = "";
+            square.classList.remove("X", "O");
+        }
+
+        // reset status message
+        status.textContent = "Move your mouse over a square and click to play an X or an O.";
+        status.classList.remove("you-won");
+    });
 });
