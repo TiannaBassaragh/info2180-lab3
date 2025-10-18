@@ -1,5 +1,6 @@
-window.addEventListener('DOMContentLoaded', () => {
-    const board = window.getElementById('board').children;
+document.addEventListener('DOMContentLoaded', () => {
+    // Exercise 1
+    const board = document.getElementById('board').children;
     const squares = board.getElementsByTagName("div");
 
     // Loop through each one and add the CSS class 'square'
